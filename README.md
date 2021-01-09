@@ -1,27 +1,55 @@
-# AngularScrollAnimations
+# Angular Scroll Animations Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+This library implements element animations that are triggered by or control user scroll.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Animate on scroll: Simple directive that adds a class (CSS animation) to an element
+- Scroll to section: Service that smooth scrolls the user to an element of the website based on the element's HTML id
 
-## Code scaffolding
+## Demo
+[Demo Application](https://angular-animate.netlify.app)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
+```$ npm install angular-scroll-animations```
 
-## Build
+Add the following to you module (`app.module.ts`)
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+...
+...
+import { AppComponent } from './app.component';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+// Import Angular Scroll Animations Module
+import { AngularScrollAnimationsModule } from "angular-scroll-animations";
 
-## Running unit tests
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    // Add module to imports list
+    AngularScrollAnimationsModule
+  ],
+  providers: [...]
+})
+export class AppModule { }
+```
 
-## Running end-to-end tests
+## Usage Instructions
+Coming soon... For now, please reference the example application in source code
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Author
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[SimpleCore](https://simplecore.org): [https://simplecore.org](https://simplecore.org)
+
+[KataniaAI](https://katania.org)
+
+[CoreClassroom](https://coreclassroom.org)
+
+[MyLanguageJournal](https://www.languagejournal.org)
+

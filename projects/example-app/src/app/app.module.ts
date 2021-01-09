@@ -22,7 +22,7 @@ import {FormsModule} from "@angular/forms";
     CoreButtonModule,
     CoreCardModule,
     CoreInputModule,
-    AngularScrollAnimationsModule,
+    AngularScrollAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
