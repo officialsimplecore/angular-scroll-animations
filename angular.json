@@ -13,7 +13,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-scroll-animations/tsconfig.lib.json",
-            "project": "projects/angular-scroll-animations/ng-package.json"
+            "project": "projects/angular-scroll-animations/ng-package.json",
           },
           "configurations": {
             "production": {
@@ -65,7 +65,8 @@
             "aot": true,
             "assets": [
               "projects/example-app/src/favicon.ico",
-              "projects/example-app/src/assets"
+              "projects/example-app/src/assets",
+              "projects/example-app/src/_redirects"
             ],
             "styles": [
               "projects/example-app/src/styles.scss"
@@ -128,7 +129,8 @@
             "karmaConfig": "projects/example-app/karma.conf.js",
             "assets": [
               "projects/example-app/src/favicon.ico",
-              "projects/example-app/src/assets"
+              "projects/example-app/src/assets",
+              "projects/example-app/src/_redirects"
             ],
             "styles": [
               "projects/example-app/src/styles.scss"
