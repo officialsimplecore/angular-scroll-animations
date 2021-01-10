@@ -53,7 +53,7 @@ export class ScrollToSectionComponent implements OnInit{
   }
 
   public scrollToSection(n: number): void {
-    this.scrollControl.scrollToSection("sec" + n);
+    this.scrollControl.scrollToElement("sec" + n);
   }
 
 }

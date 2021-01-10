@@ -10,7 +10,7 @@ export class ScrollControlService {
   constructor(private platformManager: PlatformManagerService, private scriptInjector: ScriptInjectionService) {
   }
 
-  public scrollToSection(sectionId: string, usePolyfill = false): void {
+  public scrollToElement(sectionId: string, usePolyfill = false): void {
     if (this.platformManager.isScrollCompatibleDevice()) {
       if (usePolyfill) {
         this.scrollToSectionPolyInit();
