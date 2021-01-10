@@ -23,7 +23,9 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
   @Input() startAnimation: string | null = 'pushed-down';
   @Input() endAnimation: string | null = 'released';
 
-  @Input() offset: number = 80; // Offset to start animation
+  @Input() scrollOffset: number = 70; // Position offset to start animation
+  @Input() timeOffset: number = 0; // Time offset to start animation in milliseconds
+
   @Input() useScroll?: boolean;
   @Input() threshold ?: number;
 
@@ -91,7 +93,7 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
     // Set element position
     this.setElementOffsetTop();
 
-    const scrollTriggerValue = this.offsetTop + this.offset - this.windowHeight;
+    const scrollTriggerValue = this.offsetTop + this.scrollOffset - this.windowHeight;
 
     if (this.scroll.scrollPosition >= scrollTriggerValue) {
       this.addAnimationClass();
@@ -105,7 +107,17 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
 
     // Cache value
     this.animationClassAdded = true;
-    this.addClasses(this.endAnimation);
+    this.animateEnd();
+  }
+
+  private animateEnd(): void {
+    if (this.timeOffset > 0) {
+      setTimeout(() => {
+        this.addClasses(this.endAnimation);
+      }, this.timeOffset);
+    } else {
+      this.addClasses(this.endAnimation);
+    }
   }
 
   // Handle multiple animation classes
