@@ -20,7 +20,8 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
     return this.elementRef.nativeElement.id;
   }
 
-  @Input() animationName: string | null = 'resolved';
+  @Input() startAnimation: string | null = 'pushed-down';
+  @Input() endAnimation: string | null = 'released';
 
   @Input() offset: number = 80; // Offset to start animation
   @Input() useScroll?: boolean;
@@ -29,9 +30,13 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
   constructor(private elementRef: ElementRef, private renderer: Renderer2, private scroll: ScrollDataService) { }
 
   ngOnInit(): void {
-    if (!this.animationName) {
+    if (!this.startAnimation || !this.endAnimation) {
       return;
     }
+
+    // Add start animation classes
+    this.addClasses(this.startAnimation);
+
     // Class has not been added
     this.animationClassAdded = false;
     this.useScroll = this.useScroll ? this.useScroll : ((this.useScroll !== false));
@@ -95,20 +100,24 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
 
   private addAnimationClass(): void {
     // stops execution if no class is provided
-    if(!this.animationName)
+    if(!this.endAnimation)
       return;
 
     // Cache value
     this.animationClassAdded = true;
-
-    this.addClasses(this.animationName);
+    this.addClasses(this.endAnimation);
   }
 
   // Handle multiple animation classes
   private addClasses(classes: string): void {
-
     for (const c of classes.split(' ')) {
       this.renderer.addClass(this.elementRef.nativeElement, c);
+    }
+  }
+
+  private removeClasses(classes: string): void {
+    for (const c of classes.split(' ')) {
+      this.renderer.removeClass(this.elementRef.nativeElement, c);
     }
   }
 
