@@ -5,7 +5,7 @@ import {isPlatformBrowser} from "@angular/common";
   providedIn: 'root'
 })
 export class PlatformManagerService {
-  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: any) {
   }
   public isScrollCompatibleDevice(): boolean {
     return isPlatformBrowser(this.platformId) && typeof window !== 'undefined';
