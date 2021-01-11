@@ -8,7 +8,13 @@ export class PlatformManagerService {
   constructor(@Inject(PLATFORM_ID) private readonly platformId: any) {
   }
   public isScrollCompatibleDevice(): boolean {
-    return isPlatformBrowser(this.platformId) && typeof window !== 'undefined';
+    if (isPlatformBrowser(this.platformId)) {
+      return false;
+    }
+    if (typeof window !== 'undefined') {
+      return false;
+    }
+    return true;
   }
 
 }
