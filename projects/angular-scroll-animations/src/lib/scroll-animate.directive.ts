@@ -4,6 +4,7 @@ import { Directive, Input, Renderer2, ElementRef, OnInit, OnDestroy, AfterViewIn
 
 import { Subscription } from 'rxjs';
 import {ScrollDataService} from './_services/scroll-data.service';
+import {PlatformManagerService} from "./_services/platform-manager.service";
 
 @Directive({
   selector: '[animateOnScroll]'
@@ -29,9 +30,13 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
   @Input() useScroll?: boolean;
   @Input() threshold ?: number;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private scroll: ScrollDataService) { }
+  constructor(private platformService: PlatformManagerService, private elementRef: ElementRef, private renderer: Renderer2, private scroll: ScrollDataService) { }
 
   ngOnInit(): void {
+    if (!this.platformService.isScrollCompatibleDevice()) {
+      return;
+    }
+
     if (!this.startAnimation || !this.endAnimation) {
       return;
     }
@@ -43,7 +48,7 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy, AfterViewInit 
     this.animationClassAdded = false;
     this.useScroll = this.useScroll ? this.useScroll : ((this.useScroll !== false));
     this.threshold = this.threshold ? this.threshold | 0.5 : 0.5;
-    // using intersecting observer by default, else fallback to scroll Listener
+    // Using intersecting observer by default, else fallback to scroll Listener
     if ("IntersectionObserver" in window && this.useScroll) {
       const options: IntersectionObserverInit = {
         root:null,
