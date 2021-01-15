@@ -8,7 +8,7 @@ This library implements element animations that are triggered by or control user
 - Scroll to section: Service that smooth scrolls the user to an element of the website based on the element's HTML id
 
 ## Demo
-[Demo Application](https://www.angular-animate.netlify.app/)
+[Demo Application](https://angular-animations.netlify.app/)
 
 ## Installation
 ```$ npm install angular-scroll-animations```
