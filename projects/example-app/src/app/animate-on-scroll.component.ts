@@ -7,7 +7,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
     <div animateOnScroll startAnimation="faded-out" endAnimation="released">
       <core-card>
         <h2>Title Card 1</h2>
-        <input [(ngModel)]="exclaimText" id="exclaim" type="text" appearance="outline" placeholder="Exclaim" coreInput>
+        <input [(ngModel)]="exclaimText" id="exclaim" type="text" appearance="outline" colorOverride="ffffff" placeholder="Exclaim" coreInput>
         <label for="exclaim" coreLabel>Exclaim</label>
         <p *ngIf="exclaimText">{{exclaimText + exclaimationMarks}}</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis quis nisl ornare finibus. Quisque sagittis pharetra libero, non venenatis tortor consequat in. Vivamus nisi risus, ullamcorper aliquet erat at, porttitor gravida risus. In ut justo et mauris sollicitudin tincidunt. Duis sit amet sem vel augue maximus tempor. Sed varius lacus justo, quis pellentesque odio mollis a. Pellentesque vitae feugiat est, quis aliquam arcu. In ac elit ligula. Integer at commodo turpis. Morbi iaculis lorem diam, non suscipit eros sodales vel. Vivamus nulla orci, dictum eu sem non, commodo tristique enim.</p>
