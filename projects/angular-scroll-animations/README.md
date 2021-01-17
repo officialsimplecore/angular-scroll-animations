@@ -40,7 +40,44 @@ export class AppModule { }
 ```
 
 ## Usage Instructions
-Coming soon... For now, please reference the example application in source code
+Animation trigger on scroll:
+- In template (`.html`):
+```html
+<div animateOnScroll startAnimation="faded-out" endAnimation="released" [scrollOffset]="50" [timeOffset]="10">
+```
+- Add `animateOnScroll` directive attribute to enable functionality (required)
+- `startAnimation` attribute is the CSS class name of the prior state (required)
+- `endAnimation` attribute is the CSS class name of the final state after animation (required)
+- `scrollOffset` attribute is the offset from the intersection between the bottom of the screen and the element start
+- `timeOffset` attribute is the time delay after hitting intersection point
+
+Animate scroll to section:
+- In template (`.html`):
+```html
+<button (click)="scrollToSection(1)">Scroll To Section 1</button>
+<section id="sec-1">
+</section>
+```
+- In typescript (`.ts`)
+```typescript
+constructor(private scrollControl: ScrollControlService) {}
+
+ngOnInit(): void {
+  // Initialize polyfill
+  this.scrollControl.scrollToSectionPolyInit();
+}
+
+public scrollToSection(n: number): void {
+  this.scrollControl.scrollToElement("sec-" + n);
+}
+```
+- Add a native id attribute to any element (required)
+- Use dependency injection to inject the `ScrollControlService` into the component (required)
+- Create a method that calls the `scrollToElement` method on the service (required)
+  - The `scrollToElement` method takes a string argument of the HTML id of the element to scroll to
+- Initialize lazy-loaded polyfills for smooth scrolling behavior in ngOnInit(). Reference above code.
+  - This polyfill is optional, but can be lazy loaded to support older browsers and Safari
+
 
 
 ## Author
@@ -53,3 +90,6 @@ Coming soon... For now, please reference the example application in source code
 
 [MyLanguageJournal](https://www.languagejournal.org)
 
+## Repository
+[GitHub](https://github.com/officialsimplecore/angular-scroll-animations)
+[NPM](https://www.npmjs.com/package/angular-scroll-animations)
